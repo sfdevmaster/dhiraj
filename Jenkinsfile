@@ -26,7 +26,7 @@ node {
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Deploye Code') {
 		
-		rc = command "${toolbelt}/sfdx auth:jwt:grant --instanceurl ${SFDC_HOST} --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --"
+		rc = "sfdx force:auth:jwt:grant --clientid 3MVG9d8..z.hDcPKKaxags07lW5H.AymHKe1xDzxJOoYgX83RfTqbmLpi3cTbrsJ7kcY3_n4aukMvuGRTS9pQ --jwtkeyfile server.key --username premsharma7687@playful-goat-258369.com --instanceurl https://login.salesforce.com --setdefaultdevhubusername"
                 if (rc != 0) {
                     error 'Salesforce dev hub org authorization failed.'
                 }
