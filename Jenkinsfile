@@ -17,6 +17,8 @@ node {
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
     def toolbelt = tool 'toolbelt'
+    def path = 'C:\\openssl\\bin\\server.key'
+	println path
 
     stage('checkout source') {
         // when running in multi-branch job, one must issue this command
@@ -30,7 +32,7 @@ node {
             if (isUnix()) {
                 rc = sh returnStatus: true, script: "${toolbelt} force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --setalias ${HUB_ORG} --instanceurl ${SFDC_HOST}"
             }else{
-                 rc = bat returnStatus: true, script: "\"${toolbelt}\" auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile "C:\\openssl\\bin\\server.key" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+                 rc = bat returnStatus: true, script: "\"${toolbelt}\" auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile "\"${path}\"" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
             }
             if (rc != 0) { error 'hub org authorization failed' }
 
