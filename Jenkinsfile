@@ -41,7 +41,7 @@ node {
 				rmsg = sh returnStdout: true, script: "${toolbelt} force:mdapi:deploy -d manifest/. -u ${HUB_ORG}"
 			}else{
 			   
-				rmsg = bat returnStdout: true, script: "\"${toolbelt}\\sfdx\" force:source:deploy -d --checkonly --x manifest/package.xml -u ${HUB_ORG}"
+				rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:source:deploy -d --checkonly --x manifest/package.xml -u ${HUB_ORG}"
 			}
 			  
             println rmsg
