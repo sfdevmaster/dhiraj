@@ -17,7 +17,7 @@ node {
     println SFDC_HOST
     println CONNECTED_APP_CONSUMER_KEY
     def toolbelt = tool 'toolbelt'
-    def path = 'C:\\openssl\\bin\\server.key'
+    def path = "C:\\openssl\\bin\\server.key"
 	println path
 
     stage('checkout source') {
